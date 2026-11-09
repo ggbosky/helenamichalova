@@ -82,7 +82,7 @@
   // Rezervační formulář
   document.querySelectorAll('form[data-booking]').forEach(function (form) {
     var next = form.querySelector('input[name="_next"]');
-    if (next) next.value = window.location.origin + '/rezervacni-system/?odeslano=1';
+    if (next) next.value = new URL((form.getAttribute('data-root') || '/') + 'rezervacni-system/?odeslano=1', window.location.href).href;
     var date = form.querySelector('input[type="date"]');
     if (date) date.min = new Date().toISOString().slice(0, 10);
   });

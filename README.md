@@ -20,7 +20,6 @@ i výsledky ve vyhledávačích zůstanou funkční.
 - `assets/css/style.css` — vzhled (barvy a písma nahoře v `:root`)
 - `assets/js/main.js` — mobilní menu, galerie (lightbox), rezervační formulář
 - `assets/img/` — fotky (`gallery/` plná velikost, `thumbs/` náhledy)
-- `CNAME` — vlastní doména pro GitHub Pages
 
 ## Lokální náhled
 
@@ -32,12 +31,19 @@ Pak otevřít http://localhost:8000
 
 ## Zveřejnění (GitHub Pages)
 
-1. V repozitáři: **Settings → Pages → Source: Deploy from a branch**, vybrat větev a složku `/ (root)`.
-2. U registrátora domény nastavit DNS:
-   - `www` → záznam **CNAME** na `ggbosky.github.io`
-   - kořenová doména `beauty13byhell.cz` → záznamy **A** na
+Všechny cesty jsou relativní, takže web funguje jak na
+`https://ggbosky.github.io/helenamichalova/`, tak na vlastní doméně.
+
+1. V repozitáři: **Settings → Pages → Source: Deploy from a branch**, vybrat větev
+   s webem a složku `/ (root)` → **Save**. Za pár minut poběží na
+   `https://ggbosky.github.io/helenamichalova/`.
+2. Až bude web schválený, přepnout doménu:
+   - u registrátora nastavit DNS: `www` → **CNAME** na `ggbosky.github.io`,
+     kořenová doména `beauty13byhell.cz` → záznamy **A** na
      `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-3. Po propagaci DNS zapnout v **Settings → Pages** volbu **Enforce HTTPS**.
+   - v **Settings → Pages → Custom domain** vyplnit `www.beauty13byhell.cz`
+     (GitHub si sám vytvoří soubor `CNAME`)
+   - po ověření DNS zapnout **Enforce HTTPS**
 
 ## Rezervační formulář
 
