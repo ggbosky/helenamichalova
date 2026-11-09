@@ -1,0 +1,249 @@
+/* Beauty13 by Hell — hlavní styly */
+:root {
+  --bg: #ffffff;
+  --ivory: #faf7f2;
+  --sand: #f3ede4;
+  --ink: #2b2622;
+  --muted: #6f665e;
+  --gold: #b08d57;
+  --gold-dark: #8a6a3a;
+  --line: #e7dfd3;
+  --radius: 14px;
+  --shadow: 0 10px 30px rgba(43, 38, 34, .08);
+  --font-head: "Josefin Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --wrap: 1160px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+h1, h2, h3, h4 { font-family: var(--font-head); font-weight: 400; line-height: 1.2; margin: 0 0 .6em; }
+h1 { font-size: clamp(2.1rem, 4.5vw, 3.2rem); }
+h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); }
+h3 { font-size: 1.25rem; font-weight: 600; }
+p { margin: 0 0 1em; }
+
+.wrap { width: 100%; max-width: var(--wrap); margin: 0 auto; padding: 0 20px; }
+.section { padding: clamp(56px, 8vw, 104px) 0; }
+.section--ivory { background: var(--ivory); }
+.section__head { text-align: center; max-width: 720px; margin: 0 auto clamp(32px, 5vw, 56px); }
+.section__head p { color: var(--muted); }
+.eyebrow {
+  display: inline-block;
+  font-size: .75rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  margin-bottom: .8em;
+  font-weight: 600;
+}
+.divider { width: 56px; height: 2px; background: var(--gold); margin: 18px auto 0; border: 0; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip-link { position: absolute; left: -999px; top: 8px; background: var(--ink); color: #fff; padding: 8px 14px; z-index: 100; }
+.skip-link:focus { left: 8px; }
+
+/* Tlačítka */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 14px 30px;
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  background: var(--gold);
+  color: #fff;
+  font: 600 .82rem/1 var(--font-body);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background .2s, color .2s, border-color .2s;
+}
+.btn:hover, .btn:focus-visible { background: var(--gold-dark); border-color: var(--gold-dark); }
+.btn--ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
+.btn--ghost:hover, .btn--ghost:focus-visible { background: var(--ink); color: #fff; border-color: var(--ink); }
+:focus-visible { outline: 2px solid var(--gold-dark); outline-offset: 3px; }
+
+/* Hlavička */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(255, 255, 255, .96);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.site-header .wrap { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+.logo { text-decoration: none; display: flex; align-items: baseline; gap: 6px; font-family: var(--font-head); }
+.logo__main { font-size: 1.45rem; letter-spacing: .04em; }
+.logo__main b { color: var(--gold); font-weight: 600; }
+.logo__sub { font-size: .8rem; letter-spacing: .3em; text-transform: uppercase; color: var(--muted); }
+.nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 28px; }
+.nav a {
+  text-decoration: none; font-size: .85rem; letter-spacing: .08em; text-transform: uppercase;
+  padding: 6px 0; border-bottom: 1px solid transparent; transition: border-color .2s, color .2s;
+}
+.nav a:hover, .nav a[aria-current="page"] { color: var(--gold-dark); border-bottom-color: var(--gold); }
+.nav-toggle {
+  display: none; width: 44px; height: 44px; border: 0; background: none; cursor: pointer;
+  padding: 10px; margin-right: -10px;
+}
+.nav-toggle span { display: block; height: 2px; background: var(--ink); margin: 6px 0; transition: transform .25s, opacity .25s; }
+.nav-open .nav-toggle span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.nav-open .nav-toggle span:nth-child(2) { opacity: 0; }
+.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+@media (max-width: 920px) {
+  .nav-toggle { display: block; }
+  .nav {
+    position: fixed; inset: 76px 0 auto 0;
+    background: #fff; border-bottom: 1px solid var(--line);
+    max-height: 0; overflow: hidden; transition: max-height .3s ease;
+  }
+  .nav-open .nav { max-height: 460px; box-shadow: var(--shadow); }
+  .nav ul { flex-direction: column; gap: 0; padding: 8px 20px 20px; }
+  .nav li { border-bottom: 1px solid var(--line); }
+  .nav li:last-child { border-bottom: 0; }
+  .nav a { display: block; padding: 14px 0; border: 0; }
+}
+
+/* Úvodní banner */
+.hero { background: var(--ivory); }
+.hero__img { width: 100%; max-width: 1600px; margin: 0 auto; aspect-ratio: 2 / 1; max-height: calc(100vh - 160px); object-fit: cover; object-position: center; }
+.hero__bar { border-bottom: 1px solid var(--line); background: #fff; }
+.hero__bar .wrap {
+  display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+  padding-top: 26px; padding-bottom: 26px;
+}
+.hero__bar p { margin: 0; font-family: var(--font-head); font-size: clamp(1.1rem, 2.2vw, 1.4rem); }
+.hero__bar p small { display: block; font-family: var(--font-body); font-size: .85rem; color: var(--muted); letter-spacing: .04em; }
+.hero__actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* Hlavička podstránky */
+.page-hero { position: relative; color: #fff; background: var(--ink); overflow: hidden; }
+.page-hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .55; }
+.page-hero .wrap { position: relative; padding-top: clamp(80px, 14vw, 160px); padding-bottom: clamp(56px, 9vw, 96px); text-align: center; }
+.page-hero h1 { margin: 0; text-shadow: 0 2px 20px rgba(0, 0, 0, .35); }
+.page-hero .eyebrow { color: #f1dfbf; }
+
+/* O nás */
+.about { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 64px); align-items: start; }
+.about__text p { color: #4a423c; }
+.about__photos { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.about__photos img { border-radius: var(--radius); aspect-ratio: 2 / 3; object-fit: cover; width: 100%; }
+.about__photos img:last-child { margin-top: 48px; }
+@media (max-width: 820px) { .about { grid-template-columns: 1fr; } }
+
+/* Produkty */
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.card {
+  background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 32px 26px; text-align: center; box-shadow: var(--shadow);
+}
+.card img { width: 132px; height: 132px; border-radius: 50%; object-fit: cover; margin: 0 auto 20px; border: 4px solid var(--sand); }
+.card p { color: var(--muted); font-size: .95rem; margin: 0; }
+.note { max-width: 800px; margin: 40px auto 0; text-align: center; font-weight: 500; }
+.note a { color: var(--gold-dark); }
+@media (max-width: 820px) { .cards { grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; } }
+
+/* Ceník */
+.pricing { columns: 2; column-gap: 56px; }
+.price-group { break-inside: avoid; margin-bottom: 40px; }
+.price-group h3 {
+  font-family: var(--font-head); font-weight: 400; font-size: 1.45rem;
+  border-bottom: 2px solid var(--gold); padding-bottom: 10px; margin-bottom: 4px;
+}
+.price-item { display: grid; grid-template-columns: 1fr auto; gap: 4px 20px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.price-item__name { font-weight: 600; }
+.price-item__price { font-weight: 700; text-align: right; white-space: nowrap; color: var(--gold-dark); }
+.price-item__desc { grid-column: 1 / -1; font-size: .88rem; color: var(--muted); line-height: 1.55; }
+@media (max-width: 820px) { .pricing { columns: 1; } }
+@media (max-width: 420px) { .price-item__price { white-space: normal; } }
+
+/* Rezervace */
+.booking { display: grid; grid-template-columns: 1fr 1.25fr; gap: clamp(28px, 5vw, 64px); align-items: start; }
+.booking__info { background: var(--ivory); border-radius: var(--radius); padding: 32px; }
+.booking__info ul { list-style: none; padding: 0; margin: 20px 0 0; }
+.booking__info li { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; }
+.booking__info svg { flex: none; width: 20px; height: 20px; color: var(--gold-dark); margin-top: 4px; }
+.form { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.form .full { grid-column: 1 / -1; }
+.form label { display: block; font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; }
+.form input, .form select, .form textarea {
+  width: 100%; padding: 13px 14px; border: 1px solid var(--line); border-radius: 10px;
+  font: inherit; font-size: 1rem; color: var(--ink); background: #fff;
+}
+.form input:focus, .form select:focus, .form textarea:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(176, 141, 87, .18); }
+.form textarea { min-height: 130px; resize: vertical; }
+.form .hp { display: none; }
+.form__note { font-size: .82rem; color: var(--muted); margin: 0; }
+.alert { padding: 16px 20px; border-radius: 10px; background: #eef6ec; color: #2c5b2a; border: 1px solid #cfe4cb; margin-bottom: 24px; }
+@media (max-width: 820px) { .booking { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .form { grid-template-columns: 1fr; } }
+
+/* Galerie */
+.gallery { columns: 4 220px; column-gap: 14px; }
+.gallery a { display: block; margin-bottom: 14px; border-radius: 10px; overflow: hidden; break-inside: avoid; background: var(--sand); }
+.gallery img { width: 100%; transition: transform .4s ease; }
+.gallery a:hover img { transform: scale(1.04); }
+.center { text-align: center; margin-top: 36px; }
+
+.lightbox {
+  position: fixed; inset: 0; z-index: 200; background: rgba(20, 17, 15, .94);
+  display: none; align-items: center; justify-content: center; padding: 56px 16px;
+}
+.lightbox.is-open { display: flex; }
+.lightbox img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 6px; }
+.lightbox button {
+  position: absolute; background: rgba(255, 255, 255, .1); color: #fff; border: 0; cursor: pointer;
+  width: 48px; height: 48px; border-radius: 50%; font-size: 26px; line-height: 1;
+}
+.lightbox button:hover { background: rgba(255, 255, 255, .22); }
+.lightbox__close { top: 14px; right: 14px; }
+.lightbox__prev { left: 14px; top: 50%; transform: translateY(-50%); }
+.lightbox__next { right: 14px; top: 50%; transform: translateY(-50%); }
+.lightbox__count { position: absolute; bottom: 16px; left: 0; right: 0; text-align: center; color: #cfc6bb; font-size: .85rem; }
+
+/* Recenze */
+.reviews { columns: 3 280px; column-gap: 22px; }
+.review {
+  break-inside: avoid; margin: 0 0 22px; background: #fff; border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 26px; box-shadow: var(--shadow);
+}
+.review__stars { color: var(--gold); letter-spacing: 3px; margin-bottom: 10px; }
+.review blockquote { margin: 0 0 14px; color: #4a423c; }
+.review figcaption { font-weight: 600; font-family: var(--font-head); font-size: 1.05rem; }
+
+/* Kontakt */
+.contact { display: grid; grid-template-columns: 1fr 1.3fr; gap: clamp(28px, 5vw, 56px); align-items: stretch; }
+.contact__list { list-style: none; padding: 0; margin: 0 0 28px; }
+.contact__list li { display: flex; gap: 14px; align-items: flex-start; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.contact__list svg { flex: none; width: 22px; height: 22px; color: var(--gold-dark); margin-top: 3px; }
+.contact__list a { text-decoration: none; font-weight: 600; }
+.contact__list a:hover { color: var(--gold-dark); }
+.contact__list small { display: block; color: var(--muted); font-size: .85rem; }
+.map { border: 0; width: 100%; min-height: 380px; height: 100%; border-radius: var(--radius); filter: grayscale(.35); }
+@media (max-width: 820px) { .contact { grid-template-columns: 1fr; } }
+
+/* CTA pás */
+.cta { background: var(--ink); color: #fff; text-align: center; }
+.cta p { color: #d9d0c5; max-width: 620px; margin: 0 auto 28px; }
+
+/* Patička */
+.site-footer { background: #1f1b18; color: #cfc6bb; font-size: .9rem; }
+.site-footer .wrap { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 32px; padding-top: 56px; padding-bottom: 40px; }
+.site-footer h4 { color: #fff; font-size: 1.05rem; letter-spacing: .06em; }
+.site-footer ul { list-style: none; padding: 0; margin: 0; }
+.site-footer li { margin-bottom: 6px; }
+.site-footer a { text-decoration: none; }
+.site-footer a:hover { color: #fff; }
+.site-footer .logo__main { color: #fff; }
+.footer-bottom { border-top: 1px solid #36302b; text-align: center; padding: 18px 20px; font-size: .8rem; color: #8f857b; }
+@media (max-width: 820px) { .site-footer .wrap { grid-template-columns: 1fr; } }

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rezervační systém | Beauty13 by Hell</title>
+<meta name="description" content="Rezervujte si termín v kosmetickém salonu Beauty13 by Hell, Mánesova 13, Praha 2. Rezervaci vám potvrdíme e-mailem.">
+<link rel="canonical" href="https://www.beauty13byhell.cz/rezervacni-system/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="cs_CZ">
+<meta property="og:site_name" content="Beauty13 by Hell">
+<meta property="og:title" content="Rezervační systém | Beauty13 by Hell">
+<meta property="og:description" content="Rezervujte si termín v kosmetickém salonu Beauty13 by Hell, Mánesova 13, Praha 2. Rezervaci vám potvrdíme e-mailem.">
+<meta property="og:url" content="https://www.beauty13byhell.cz/rezervacni-system/">
+<meta property="og:image" content="https://www.beauty13byhell.cz/assets/img/hero.jpg">
+<meta name="theme-color" content="#b08d57">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#obsah">Přejít na obsah</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="/" aria-label="Beauty13 by Hell – úvod"><span class="logo__main">Beauty<b>13</b></span><span class="logo__sub">by Hell</span></a>
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="hlavni-menu"><span></span><span></span><span></span></button>
+    <nav class="nav" id="hlavni-menu" aria-label="Hlavní menu">
+      <ul>
+      <li><a href="/">Úvod</a></li>
+      <li><a href="/portfolio/">Ceník</a></li>
+      <li><a href="/rezervacni-system/" aria-current="page">Rezervace</a></li>
+      <li><a href="/fotogalerie/">Fotogalerie</a></li>
+      <li><a href="/reference/">Recenze</a></li>
+      <li><a href="/kontakt/">Kontakt</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="obsah">
+<section class="page-hero">
+  <img src="/assets/img/rezervace.jpg" alt="" fetchpriority="high">
+  <div class="wrap">
+    <span class="eyebrow">Online rezervace</span>
+    <h1>Rezervační systém</h1>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap">
+<div class="booking">
+  <div class="booking__info">
+    <h2>Rezervační formulář</h2>
+    <p>Zarezervujte si místo včas. Rezervaci vám potvrdíme e-mailem.</p>
+    <ul>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg><span>Raději telefonicky? Volejte <a href="tel:+420601030401"><strong>+420 601 030 401</strong></a></span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Pondělí – Pátek: 9:00 – 19:00</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>Mánesova 13, 120 00 Praha 2</span></li>
+    </ul>
+  </div>
+  <div>
+    <div class="alert" id="rezervace-odeslana" role="status" hidden>Děkujeme! Vaši rezervaci jsme přijali a brzy vám ji potvrdíme e-mailem.</div>
+    <form class="form" data-booking action="https://formsubmit.co/beauty13byhell@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="Nová rezervace z webu beauty13byhell.cz">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_next" value="https://www.beauty13byhell.cz/rezervacni-system/?odeslano=1">
+      <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="full">
+        <label for="f-jmeno">Jméno a příjmení *</label>
+        <input id="f-jmeno" name="Jméno a příjmení" type="text" autocomplete="name" required>
+      </div>
+      <div>
+        <label for="f-email">E-mail *</label>
+        <input id="f-email" name="email" type="email" autocomplete="email" required>
+      </div>
+      <div>
+        <label for="f-tel">Telefonní číslo *</label>
+        <input id="f-tel" name="Telefon" type="tel" autocomplete="tel" required>
+      </div>
+      <div>
+        <label for="f-sluzba">Procedura</label>
+        <select id="f-sluzba" name="Procedura">
+              <option value="">Vyberte proceduru (nepovinné)</option>
+              <optgroup label="Ošetření pleti">
+              <option>Luxusní ošetření pleti</option>
+              <option>Základní ošetření pleti</option>
+              <option>Anti-Akné ošetření</option>
+              <option>Bylinné ošetření</option>
+              <option>Masáž obličeje – 20min</option>
+              <option>Barvení obočí/řas</option>
+              </optgroup>
+              <optgroup label="Přístrojová ošetření">
+              <option>Ultrazvuková špachtle – 20min</option>
+              <option>Galvanická žehlička – 20min</option>
+              <option>Infračervené světlo – 25min</option>
+              </optgroup>
+              <optgroup label="Chemický peeling">
+              <option>Chemický peeling Mandelo – 50min</option>
+              <option>Chemický peeling Anti-akne – 50min</option>
+              <option>Chemický peeling lifting – 50min</option>
+              </optgroup>
+              <optgroup label="Mezoterapie">
+              <option>Mezoterapie – Jednorázové ošetření</option>
+              <option>Mezoterapie basic – 3x ošetření (sleva 800 Kč)</option>
+              <option>Mezoterapie luxury</option>
+              </optgroup>
+              <optgroup label="Hyaluron pen">
+              <option>Lifting rtů – Pen - 1ml</option>
+              <option>Lifting rtů – Pen - 0,5ml</option>
+              <option>Nosoretní rýhy – Pen - 1ml</option>
+              <option>Čelistní úhly – 2ml</option>
+              </optgroup>
+              <optgroup label="Permanentní make-up">
+              <option>Permanentní makeup – Rty - Aquarelle lips</option>
+              <option>Permanentní makeup – Obočí - Ombré brows</option>
+              <option>Permanentní makeup – Obočí - Shading brows</option>
+              <option>Doplnění PMU – Do 3 měsíců</option>
+              </optgroup>
+              <optgroup label="Tělo">
+              <option>Masáž Maderoterapie</option>
+              <option>Lymfomodeling – 60-90min břicho / nohy</option>
+              <option>Zeštíhlující zábaly – 50min</option>
+              <option>Lypolýza – Strong 6ml</option>
+              </optgroup>
+              <optgroup label="Vitamínové injekce (včeličky)">
+              <option>Včeličky B12</option>
+              <option>Včeličky NaD+</option>
+              </optgroup>
+              <option>Dárkový voucher</option><option>Kosmetické produkty / konzultace</option>
+        </select>
+      </div>
+      <div>
+        <label for="f-datum">Datum *</label>
+        <input id="f-datum" name="Datum" type="date" required>
+      </div>
+      <div class="full">
+        <label for="f-pozn">Poznámka</label>
+        <textarea id="f-pozn" name="Poznámka" placeholder="Preferovaný čas, dotaz…"></textarea>
+      </div>
+      <div class="full">
+        <button class="btn" type="submit">Rezervovat</button>
+      </div>
+      <p class="form__note full">Odesláním formuláře souhlasíte se zpracováním uvedených údajů za účelem vyřízení rezervace.</p>
+    </form>
+  </div>
+</div>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <a class="logo" href="/"><span class="logo__main">Beauty<b>13</b></span><span class="logo__sub">by Hell</span></a>
+      <p style="margin-top:14px">Kosmetický salon v Praze 2. Profesionální péče o pleť, permanentní make-up, mezoterapie a péče o tělo.</p>
+    </div>
+    <div>
+      <h4>Kontakt</h4>
+      <ul>
+        <li><a href="https://www.google.com/maps/search/?api=1&query=M%C3%A1nesova+13%2C+120+00+Praha+2" target="_blank" rel="noopener">Mánesova 13, 120 00 Praha 2</a></li>
+        <li><a href="tel:+420601030401">+420 601 030 401</a></li>
+        <li><a href="mailto:beauty13byhell@gmail.com">beauty13byhell@gmail.com</a></li>
+        <li><a href="https://www.instagram.com/beauty13_byhell/" target="_blank" rel="noopener">@beauty13_byhell</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Otevírací doba</h4>
+      <ul>
+        <li>Pondělí – Pátek: 9:00 – 19:00</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; <span data-year>2026</span> BEAUTY13 BY HELL &middot; Mánesova 13, 120 00 Praha 2 &middot; +420 601 030 401</div>
+</footer>
+<script src="/assets/js/main.js" defer></script>
+</body>
+</html>
