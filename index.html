@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.className+=" js"</script>
 <title>Beauty13 by Hell</title>
 <meta name="description" content="Beauty13 by Hell – kosmetický salon v Praze 2 (Mánesova 13). Ošetření pleti, chemický peeling, mezoterapie, hyaluron pen, permanentní make-up, maderoterapie a zeštíhlující zábaly.">
 <link rel="canonical" href="https://www.beauty13byhell.cz/">
@@ -276,34 +277,59 @@
   <div class="wrap">
 <div class="booking">
   <div class="booking__info">
-    <h2>Rezervační formulář</h2>
+    <h2>Rezervace termínu</h2>
     <p>Zarezervujte si místo včas. Rezervaci vám potvrdíme e-mailem.</p>
+    <ol class="steps">
+      <li><span>1</span>Vyberte den</li>
+      <li><span>2</span>Vyberte čas</li>
+      <li><span>3</span>Vyplňte kontakt a odešlete</li>
+    </ol>
     <ul>
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg><span>Raději telefonicky? Volejte <a href="tel:+420601030401"><strong>+420 601 030 401</strong></a></span></li>
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Pondělí – Pátek: 9:00 – 19:00</span></li>
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>Mánesova 13, 120 00 Praha 2</span></li>
     </ul>
   </div>
-  <div>
+  <div class="booker" data-booker>
     <div class="alert" id="rezervace-odeslana" role="status" hidden>Děkujeme! Vaši rezervaci jsme přijali a brzy vám ji potvrdíme e-mailem.</div>
-    <form class="form" data-booking data-root="./" action="https://formsubmit.co/beauty13byhell@gmail.com" method="POST">
+    <div class="slots">
+      <div class="slots__head">
+        <h3>Dostupné termíny</h3>
+        <div class="slots__nav">
+          <button type="button" class="slots__arrow" data-week-prev aria-label="Předchozí týden">&#8249;</button>
+          <span class="slots__range" data-week-label aria-live="polite"></span>
+          <button type="button" class="slots__arrow" data-week-next aria-label="Další týden">&#8250;</button>
+        </div>
+      </div>
+      <div class="week" data-week></div>
+      <p class="slots__day"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span data-day-label></span></p>
+      <div data-times></div>
+      <noscript><p class="slots__empty">Pro výběr termínu povolte v prohlížeči JavaScript, nebo nám zavolejte na <a href="tel:+420601030401">+420 601 030 401</a>.</p></noscript>
+    </div>
+    <form class="form booking-form" id="rezervace-formular" data-booking data-root="./" action="https://formsubmit.co/beauty13byhell@gmail.com" method="POST">
       <input type="hidden" name="_subject" value="Nová rezervace z webu beauty13byhell.cz">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_next" value="https://www.beauty13byhell.cz/rezervacni-system/?odeslano=1">
       <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <input type="hidden" name="Datum" data-field-date>
+      <input type="hidden" name="Čas" data-field-time>
+      <div class="picked full">
+        <span>Vybraný termín<strong data-picked></strong></span>
+        <button type="button" class="picked__change" data-change>Změnit</button>
+      </div>
       <div class="full">
         <label for="f-jmeno">Jméno a příjmení *</label>
         <input id="f-jmeno" name="Jméno a příjmení" type="text" autocomplete="name" required>
       </div>
       <div>
+        <label for="f-tel">Telefonní číslo *</label>
+        <input id="f-tel" name="Telefon" type="tel" autocomplete="tel" inputmode="tel" required>
+      </div>
+      <div>
         <label for="f-email">E-mail *</label>
         <input id="f-email" name="email" type="email" autocomplete="email" required>
       </div>
-      <div>
-        <label for="f-tel">Telefonní číslo *</label>
-        <input id="f-tel" name="Telefon" type="tel" autocomplete="tel" required>
-      </div>
-      <div>
+      <div class="full">
         <label for="f-sluzba">Procedura</label>
         <select id="f-sluzba" name="Procedura">
               <option value="">Vyberte proceduru (nepovinné)</option>
@@ -355,18 +381,14 @@
               <option>Dárkový voucher</option><option>Kosmetické produkty / konzultace</option>
         </select>
       </div>
-      <div>
-        <label for="f-datum">Datum *</label>
-        <input id="f-datum" name="Datum" type="date" required>
-      </div>
       <div class="full">
         <label for="f-pozn">Poznámka</label>
-        <textarea id="f-pozn" name="Poznámka" placeholder="Preferovaný čas, dotaz…"></textarea>
+        <textarea id="f-pozn" name="Poznámka" rows="3" placeholder="Dotaz, přání…"></textarea>
       </div>
       <div class="full">
-        <button class="btn" type="submit">Rezervovat</button>
+        <button class="btn btn--block" type="submit">Odeslat rezervaci</button>
       </div>
-      <p class="form__note full">Odesláním formuláře souhlasíte se zpracováním uvedených údajů za účelem vyřízení rezervace.</p>
+      <p class="form__note full">Odesláním formuláře souhlasíte se zpracováním uvedených údajů za účelem vyřízení rezervace. Termín je závazný až po našem potvrzení.</p>
     </form>
   </div>
 </div>

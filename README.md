@@ -45,7 +45,27 @@ Všechny cesty jsou relativní, takže web funguje jak na
      (GitHub si sám vytvoří soubor `CNAME`)
    - po ověření DNS zapnout **Enforce HTTPS**
 
-## Rezervační formulář
+## Rezervační systém
+
+Klientka vybere den (týdenní přehled Po–Pá), pak čas (po 30 minutách,
+9:00–18:00) a vyplní kontakt. Minulé časy, víkendy a české státní svátky
+se nabízet nebudou. Do e-mailu přijde datum a čas i v předmětu, např.
+„Rezervace: Středa 18. 11. 2026 v 14:30 – Jana Nováková“.
+
+Nastavení je na začátku sekce *Rezervace termínu* v `assets/js/main.js`:
+
+```js
+var BOOKING = {
+  open: '9:00', lastStart: '18:00', step: 30,
+  closed: ['2026-12-23'],                    // zavřeno celý den (dovolená)
+  blocked: { '2026-11-20': ['10:00', '10:30'] } // už obsazené časy
+};
+```
+
+Web nemá databázi, takže obsazené časy se nepromítají automaticky —
+rezervace je poptávka, kterou salon potvrdí e-mailem.
+
+## Odesílání formuláře
 
 Formulář odesílá přes službu [FormSubmit](https://formsubmit.co/) na
 `beauty13byhell@gmail.com`. Při **prvním** odeslání přijde na tento e-mail
